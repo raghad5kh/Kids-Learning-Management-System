@@ -13,8 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('quizs', function (Blueprint $table) {
             $table->id();
+            $table->string('description');
+            $table->foreignId('admin_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('level_id')->constrained('levels')->cascadeOnDelete();
+            //$table->integer('total_points')->default(0);
+
             $table->timestamps();
         });
     }
@@ -26,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('quizs');
     }
 };

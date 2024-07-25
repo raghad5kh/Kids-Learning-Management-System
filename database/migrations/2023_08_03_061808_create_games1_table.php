@@ -13,10 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('premissions', function (Blueprint $table) {
+        Schema::create('games1', function (Blueprint $table) {
+            $table->foreignId('level_id')->constrained('levels')->cascadeOnDelete();
             $table->id();
-            $table ->string('title');
-            $table->timestamps();
+            $table->string('word')->nullable();
+            $table->string('text')->nullable();
+            $table->longText('image')->nullable();
+
+         //   $table->timestamps();
         });
     }
 
@@ -27,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('premissions');
+        Schema::dropIfExists('games1');
     }
 };

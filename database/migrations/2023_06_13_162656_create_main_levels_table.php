@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('_admins', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('role_id')->constrained('roles')->cascadeOnDelete();
-            $table->rememberToken();
-            $table->string('email')->unique()->nullable();
-            $table->string('password')->nullable();
-            $table->timestamps();
+        Schema::create('main_levels', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('level_name');
+            // $table->foreignId('level_id')->constrained('levels')->cascadeOnDelete();
+          //  $table->timestamps();
         });
     }
 
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_admins');
+        Schema::dropIfExists('main_levels');
     }
 };

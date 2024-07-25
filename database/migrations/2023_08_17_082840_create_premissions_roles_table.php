@@ -13,8 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('archeivements', function (Blueprint $table) {
+        Schema::create('premissions_roles', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('role_id')->constrained('roles')->cascadeOnDelete();
+            $table->foreignId('premission_id')->constrained('premissions')->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('archeivements');
+        Schema::dropIfExists('premissions_roles');
     }
 };

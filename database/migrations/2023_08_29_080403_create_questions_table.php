@@ -13,8 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('levels', function (Blueprint $table) {
+        Schema::create('questions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('quiz_id')->constrained('quizs')->cascadeOnDelete();
+             $table-> string('question');
+            //  $table->integer('answer_question')->default(0);
+             $table->string('correct_answer');
+            //  $table-> integer('point_question');
             $table->timestamps();
         });
     }
@@ -26,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('levels');
+        Schema::dropIfExists('questions');
     }
 };

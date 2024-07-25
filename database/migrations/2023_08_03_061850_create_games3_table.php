@@ -13,9 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('answers', function (Blueprint $table) {
+        Schema::create('games3', function (Blueprint $table) {
+            $table->foreignId('level_id')->constrained('levels')->cascadeOnDelete();
             $table->id();
-            $table->timestamps();
+            $table -> string('name');
+            $table -> Longtext('value1');
+            $table -> string('value2');
+        //    $table->timestamps();
         });
     }
 
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('answers');
+        Schema::dropIfExists('games3');
     }
 };

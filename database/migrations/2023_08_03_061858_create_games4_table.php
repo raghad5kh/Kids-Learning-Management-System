@@ -13,7 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('games4', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('level_id')->constrained('levels')->cascadeOnDelete();
+         //   $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('games4');
     }
 };
